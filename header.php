@@ -22,38 +22,43 @@
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'cok' ); ?></a>
 
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+	<header class="header" <?php echo has_post_thumbnail($post->ID ) ? 'style="background-image:url('. wp_get_attachment_url( get_post_thumbnail_id($post->ID) ) .')"' : '' ?>>
+		<div class="header-inner">
+			<div class="top">
+                <div class="wrap">
+                    <h1 class="logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><span class="screen-reader-text"><?php bloginfo( 'name' ); ?></span></a></h1>
+                    <button class="nav-toggle" aria-controls="primary-menu">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                    </button>
+                </div>
+			</div>
+			<nav id="site-navigation" class="main-navigation">
 				<?php
-			else :
+				wp_nav_menu(
+					array(
+						'container'=> false,
+						'theme_location' => 'menu-1',
+						'menu_id'        => 'primary-menu',
+					)
+				);
 				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$cok_description = get_bloginfo( 'description', 'display' );
-			if ( $cok_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $cok_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+			</nav><!-- #site-navigation -->
+			<?php if ( is_front_page() ) : ?>
+				<div class="header-content wrap">
+					<?php
+						if ( have_posts() ) :
+							/* Start the Loop */
+							while ( have_posts() ) :
+								the_post();
+								the_content();
+							endwhile;
+						endif;
+					?>
+				</div>
+				<button class="skip-to-content"><span class="screen-reader-text">Skip to Content</span></button>
 			<?php endif; ?>
-		</div><!-- .site-branding -->
-
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'cok' ); ?></button>
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
-			?>
-		</nav><!-- #site-navigation -->
+		</div>
 	</header><!-- #masthead -->

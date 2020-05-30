@@ -227,19 +227,19 @@ function my_lead_block_html() {
 
 
 // Disable Gutenberg on specific pages
-add_action('admin_init', function () {
-    if (array_key_exists('post', $_GET) || array_key_exists('post_ID', $_GET)) {
-        $post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'] ;
-        if (!isset($post_id)) {
-            return;
-        }
-        $title = get_the_title($post_id);
-        //$contact = get_the_title($post_id);
-        if ($title == 'Home') {
-            remove_post_type_support('page', 'editor');
-        }
-    }
-}, 10);
+// add_action('admin_init', function () {
+//     if (array_key_exists('post', $_GET) || array_key_exists('post_ID', $_GET)) {
+//         $post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'] ;
+//         if (!isset($post_id)) {
+//             return;
+//         }
+//         $title = get_the_title($post_id);
+//         //$contact = get_the_title($post_id);
+//         if ($title == 'Home') {
+//             remove_post_type_support('page', 'editor');
+//         }
+//     }
+// }, 10);
 
 // Customized options page
 add_action('acf/init', 'my_acf_op_init');
@@ -262,3 +262,16 @@ function my_acf_op_init() {
 
 // Theme Widgets
 require get_template_directory() . '/inc/theme-widgets.php';
+
+// Theme Extras
+require get_template_directory() . '/inc/extras.php';
+
+// Add body class based on existance of post thumbnail.
+function add_featured_image_body_class( $classes ) {    
+global $post;
+	if ( isset ( $post->ID ) && get_the_post_thumbnail($post->ID)) {
+			$classes[] = 'has-featured-image';
+	}
+			return $classes;
+}
+add_filter( 'body_class', 'add_featured_image_body_class' );

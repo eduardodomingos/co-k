@@ -1,0 +1,52 @@
+<p>
+<label>First Name*</label>
+[text* first-name]
+</p>
+
+<div class="two-cols">
+<p>
+<label>Last Name</label>
+[text* last-name]
+</p>
+<p>
+<label>Email*</label>
+[email* email] 
+</p>
+</div>
+
+<p>
+<label>Mobile Phone*</label>
+[tel* mobile-phone]
+</p>
+
+<div class="two-cols">
+<p>
+<label>Resume CV*</label>
+[file* resume-cv] 
+</p>
+<p>
+<label>Cover Letter</label>
+[file* cover-letter]  
+</p>
+</div>
+
+<div class="two-cols">
+<p>
+<label>Linkedin Profile</label>
+[url linkedin-url] 
+</p>
+<p>
+<label>Website</label>
+[url website-url]  
+</p>
+</div>
+
+<p>
+<label class="select-label">Would you like to be considered for future Projects?</label>
+<span class="select-wrapper">[select* menu-availability first_as_label "Please Select" "Yes" "No"]</span>
+</p>
+
+<p>
+<label class="select-label">What encouraged you most to apply?</label>
+<span class="select-wrapper">[select* menu-motivation first_as_label "Please Select" "Yes" "No"]</span>
+</p>

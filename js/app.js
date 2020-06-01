@@ -17,6 +17,8 @@
                 badge: true
             });
 
+            $("select option:first").attr('disabled', 'disabled');
+
             // Hamburger
             dom.$navToggle.click(function() {
                 dom.$body.toggleClass('nav-open');

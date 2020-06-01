@@ -163,6 +163,7 @@ add_action('widgets_init', 'cok_widgets_init');
 function cok_scripts()
 {
 	wp_enqueue_style('cok-fonts', '//fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Montserrat:wght@700;800;900&family=Playfair+Display:wght@400;700&display=swap');
+	
 	wp_enqueue_style('cok-style', get_stylesheet_uri(), array(), _S_VERSION);
 	wp_style_add_data('cok-style', 'rtl', 'replace');
 

@@ -30,5 +30,47 @@
             font-style: italic;
             text-decoration: underline;
         }
+        .badge {
+            background-color: $cornflower-blue;
+            color: $white;
+            padding: rem(2px 10px);
+            border-radius: rem(9px);
+        }
+    }
+
+    .select-label {
+        display: inline-block;
+        margin-bottom: rem(10px);
+    }
+    .select-wrapper {
+        position: relative;
+        display: inline-block;
+        width: 50%;
+    }
+    
+    .select-wrapper:before {
+        content: '\f107';
+        font-family: $font-icons;
+        color: $black;
+        display: inline-block;
+        position: absolute;
+        right: rem(7px);
+        top: rem(2px);
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    select {
+        padding: rem(5px 30px 5px 5px);
+        background: $silver;
+        color: $black;
+        border: none;
+        appearance: none;
+        border-radius: 0;
+        width: 100%;
+    }
+    
+    select::-ms-expand {
+        display: none;
     }
 }

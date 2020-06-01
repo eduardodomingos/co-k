@@ -1,0 +1,55 @@
+.works {
+    .works-header {
+        background-color: $mine-shaft;
+        color: $white; 
+        .works-filters {
+            font-size: rem(14px);
+            button {
+                padding: rem(5px);
+                &.active {
+                    background-color: $white;
+                    color: $black;
+                    border-radius: rem(10px);
+                }
+            }
+            .sectors {
+                display: inline;
+                span {
+                    color: $rose;
+                }
+                button {
+                    &:before {
+                        content: ';';
+                        color: $cornflower-blue;
+                    }
+                }
+            }
+            .services {
+                display: inline;
+                span {
+                    color: $cornflower-blue;
+                }
+                button {
+                    &:before {
+                        content: '/';
+                        color: $cornflower-blue;
+                    }
+                }
+            }
+        }
+    }
+
+    .work {
+        width: 100%;
+        @include mq($from: mobileLandscape) {
+            width: 50%;
+        }
+        @include mq($from: tablet) {
+            width: calc(100% / 3);
+        }
+        @include mq($from: desktop) {
+            width: 25%;
+        }
+
+    }
+}

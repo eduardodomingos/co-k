@@ -1,0 +1,36 @@
+.cta {
+    &--chat {
+        background-color: $cosmos;
+        .cta-content {
+            position: relative;
+            height: rem(300px);
+        }
+        h2,
+        h3 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            text-align: center;
+            max-width: 370px;
+            width: 100%;
+        }
+        h2 {
+            font-family: $font-playfair;
+            font-style: italic;
+            text-transform: capitalize;
+            font-size: rem(48px);
+            margin-top: rem(-30px);
+        }
+        h3 {
+            font-family: $font-montserrat;
+            color: $rose;
+            text-transform: uppercase;
+            text-decoration: underline;
+            font-size: rem(50px);
+            opacity: .65;
+            font-weight: 900;
+            line-height: 1;
+        }
+    }
+}

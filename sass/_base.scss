@@ -1,0 +1,114 @@
+/*--------------------------------------------------------------
+# Rooting Elements
+--------------------------------------------------------------*/
+html {
+    @include rem-baseline;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: $font-ibm-plex;
+    font-size: $font-size;
+    line-height: $line-height;
+    background-color: $white;
+    padding-top: $header-top-height;
+    &.has-featured-image {
+        padding-top: 0;
+        &.header-collapsed {
+            padding-top: $header-cover-height;
+            &.home {
+                padding-top: $header-cover-height--home;
+            }
+        }
+    }
+    &.nav-open{
+        overflow: hidden;
+    }
+    // &.home {
+    //     &.header-fixed {
+    //         padding-top: 100vh;
+    //     }
+    // }
+}
+
+/*--------------------------------------------------------------
+# Text
+--------------------------------------------------------------*/
+@include headings() {
+    line-height: $line-height--title;
+    font-weight: $font--bold;
+    word-wrap: break-word;
+}
+
+.screen-reader-text {
+    @extend %screen-reader-text;
+}
+
+/*--------------------------------------------------------------
+# Interactive Elements: Links, Buttons and Form Inputs
+--------------------------------------------------------------*/
+input,
+textarea,
+button,
+select,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    @include attention() {
+        outline: 0;
+    }
+}
+
+/*--------------------------------------------------------------
+# Media
+--------------------------------------------------------------*/
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/*--------------------------------------------------------------
+# Wrap
+--------------------------------------------------------------*/
+.wrap {
+    position: relative;
+    max-width: $wrapper-max-width;
+    padding: 0 $spacing-unit;
+    margin: 0 auto;
+    width: 100%;
+
+    &--content {
+        max-width: $wrapper-content-max-width;
+    }
+}
+
+/*--------------------------------------------------------------
+# Insulate
+--------------------------------------------------------------*/
+
+.insulate {
+    padding-top: $spacing-unit;
+    padding-bottom: $spacing-unit;
+    
+    &--mid {
+        padding-top: $spacing-unit + $spacing-unit--small;
+        padding-bottom: $spacing-unit + $spacing-unit--small;
+    }
+
+    &--large {
+        padding-top: $spacing-unit--large;
+        padding-bottom: $spacing-unit--large;
+    }
+
+    &--huge {
+        padding-top: $spacing-unit--huge;
+        padding-bottom: $spacing-unit--huge;
+    }
+}

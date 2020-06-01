@@ -1,0 +1,12 @@
+.team-grid {
+    display: grid;
+    @include mq($from: mobileLandscape) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @include mq($from: tablet) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @include mq($from: desktop) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

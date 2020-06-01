@@ -1,0 +1,70 @@
+.footer {
+    background-color: $black;
+    color: $white;
+    .logo {
+        display: block;
+        background-image: url(images/dist/logo-white.png);
+        opacity: .5;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        @include size(300px, 50px);
+        transition: opacity .3s ease-in-out;
+        @include attention() {
+            opacity: 1;
+        }
+    }
+
+    h2 {
+        font-size: rem(30px);
+        margin-bottom: $spacing-unit;
+    }
+    
+    .footer-content {
+        font-size: rem(15px);
+        @include mq($from: tablet) {
+            display: flex;
+            justify-content: space-between;
+            padding-left: $spacing-unit--large;
+            padding-right: $spacing-unit--large;
+        }
+        p {
+            margin-bottom: $spacing-unit;
+        }
+        a {
+            @include attention() {
+                text-decoration: underline;
+            }
+        }
+        .left {
+            @include mq($from: tablet) {
+                max-width: 50%;
+            }
+        }
+
+        .right {
+            font-size: rem(13px);
+            > div:not(:last-child) {
+                margin-bottom: $spacing-unit;
+            }
+            @include mq($from: tablet) {
+                display: flex;
+                justify-content: space-between;
+                > div:not(:last-child) {
+                    margin-bottom: 0;
+                    margin-right: $spacing-unit--large;
+                }
+            }
+            ul {
+                font-weight: $font--bold;
+                font-style: italic;
+                li {
+                    margin-bottom: $spacing-unit--small;
+                }
+            }
+        }
+    }
+    .legal {
+        color: rgba($white, .45);
+        font-size: rem(13px);
+    }
+}

@@ -1,7 +1,20 @@
 <article class="<?php echo isset($css_class) ? $css_class : '' ?> teaser">
     <?php
     if( $image ) {
-        echo wp_get_attachment_image( $image, 'thumbnail' );
+        if(isset($show_link) && true === $show_link) {
+            echo '<a href="'. esc_url( get_permalink() ) .'" rel="bookmark">';
+        }
+        
+
+        $raw_image = wp_get_attachment_image( $image, 'thumbnail' );
+        $final_image = preg_replace('/(height|width)="\d*"\s/', "", $raw_image);
+
+        echo $final_image;
+
+        if(isset($show_link) && true === $show_link) {
+            echo '</a>';
+        }
+        
     }
     ?>
     <div class="teaser-content">
@@ -11,7 +24,9 @@
         <?php the_title( '<h1>', '</h1>' );?>
     <?php endif;?>
         
-        <p class="meta"><?php echo $meta;?></p>
+        <?php if(!empty($meta)): ?>
+            <p class="meta"><?php echo $meta;?></p>
+        <?php endif;?>
 
         <?php if($list_type == 'team-member'): ?>
             <?php if( have_rows('social_networks') ): ?>
@@ -23,6 +38,17 @@
                     <?php endwhile; ?>
                 </ul>
             <?php endif; ?>
+        <?php elseif($list_type == 'work'):?>
+            <ul class="list">
+            <?php
+                $posttags = get_the_tags();
+                if ($posttags) {
+                    foreach($posttags as $tag) {
+                        echo '<li>' . $tag->name . '</li>'; 
+                    }
+                } 
+            ?>
+            </ul>
         <?php endif; ?>
 
     </div>

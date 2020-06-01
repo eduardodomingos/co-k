@@ -1,0 +1,17 @@
+.clients-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: $spacing-unit--small;
+    @include mq($from: tablet) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @include mq($from: desktop) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.client {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

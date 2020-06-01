@@ -11,7 +11,7 @@ add_action( 'widgets_init', 'cok_register_widgets' );
 
 class COK_CTA extends WP_Widget {
     function __construct() {
-        $widget_ops = array( 'classname' => 'cta', 'description' => __( 'Display Call To Action banner', 'cok' ) );
+        $widget_ops = array( 'classname' => 'cta cta--chat insulate--mid', 'description' => __( 'Display Call To Action banner', 'cok' ) );
 		parent::__construct( 'cta', __('Call To Action','cok' ), $widget_ops );
     }
 
@@ -26,13 +26,11 @@ class COK_CTA extends WP_Widget {
         echo $args['before_widget'];
         ?>
 
-        <aside class="cta cta--chat insulate--mid">
-            <div class="cta-content wrap wrap--content">
-                <h3><?php echo $title ?></h3>
-                <h2><a href="mailto: <?php echo $description_url ?>"><?php echo $description ?></a></h2>
-            </div>
-        </aside>
-
+        <div class="cta-content wrap wrap--content">
+            <h3><?php echo $title ?></h3>
+            <h2><a href="mailto: <?php echo $description_url ?>"><?php echo $description ?></a></h2>
+        </div>
+        
         <?php
         echo $args['after_widget'];
 

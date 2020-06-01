@@ -1,0 +1,63 @@
+.content {
+    font-family: $font-playfair;
+    @include mq($from: tablet) {
+        font-size: rem(18px);
+    }
+    
+    > *:not(:last-child) {
+        margin-bottom: $spacing-unit;
+    }
+
+    .title {
+        font-family: $font-montserrat;
+        font-weight: 800;
+        font-size: rem(45px);
+        margin-bottom: $spacing-unit;
+        line-height: 1.1;
+
+        @include mq($from: mobileLandscape) {
+            font-size: rem(50px);
+        }
+        @include mq($from: tablet) {
+            font-size: rem(55px);
+        }
+        @include mq($from: desktop) {
+            font-size: rem(70px);
+        }
+    }
+    .lead {
+        font-style: italic;
+        font-size: rem(25px);
+        line-height: $line-height--title;
+        margin-bottom: $spacing-unit--large;
+        @include mq($from: tablet) {
+            font-size: rem(30px);
+        }
+        @include mq($from: desktop) {
+            font-size: rem(45px);
+        }
+    }
+
+    @include headings() {
+        font-family: $font-montserrat;
+    }
+
+    h1 {
+        font-size: $font-size--h1;
+    }
+    h2 {
+        font-size: $font-size--h2;
+    }
+    h3 {
+        font-size: $font-size--h3;
+    }
+    h4 {
+        font-size: $font-size--h4;
+    }
+    h5 {
+        font-size: $font-size--h5;
+    }
+    h6 {
+        font-size: $font-size--h6;
+    }
+}

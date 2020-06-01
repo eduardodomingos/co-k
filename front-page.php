@@ -34,7 +34,7 @@ get_header();
 					?>
 					<div class="<?php echo $cssClass; ?> insulate--huge"
 						<?php if(!empty($bg_color) || !empty($color)):?>
-							style="<?php echo !empty($bg_color) ? 'background-color:' . $bg_color .';' : '' ?><?php !empty($color) ? ' color:'. $color .';' : '' ?>"
+							style="<?php echo !empty($bg_color) ? 'background-color:' . $bg_color .';' : '' ?><?php echo !empty($color) ? ' color:'. $color .';' : '' ?>"
 						<?php endif; ?>>
 						<div class="wrap">
 							<?php if(!empty($section_title)) : ?>
@@ -51,7 +51,7 @@ get_header();
 				elseif( get_row_layout() == 'clients' ): 
 					$section_title = esc_html(get_sub_field('title'));
 					?>
-					<div class="insulate--large clients">
+					<div class="clients insulate--large">
 						<h2 class="wrap title"><?php echo $section_title;?></h2>
 						<?php
 						$query = new WP_Query(array(
@@ -78,7 +78,7 @@ get_header();
 				elseif( get_row_layout() == 'team_members' ): 
 					$section_title = esc_html(get_sub_field('title'));
 					?>
-					<div class="insulate creators">
+					<div class="creators insulate">
 						<h2 class="wrap title"><?php echo $section_title;?></h2>
 						<?php 
 						$query = new WP_Query(array(
@@ -146,7 +146,49 @@ get_header();
 										<?php endif; ?>
 									</div>
 								</div>
-            				</header>
+							</header>
+							<?php 
+							$query = new WP_Query(array(
+								'post_type' => 'work',
+								'post_status' => 'publish',
+								'posts_per_page' => -1
+							));
+							if ( $query->have_posts() ) : ?>
+							
+								<div class="wrap">
+									<div class="works-grid">
+									<?php
+									while ($query->have_posts()) {
+										$query->the_post();
+										
+										$cats = array();
+										foreach (get_the_category($post->ID) as $c) {
+											$cat = get_category($c);
+											array_push($cats, $cat->name);
+										}
+										if (sizeOf($cats) > 0) {
+											$post_categories = implode(' ', $cats);
+										} else {
+											$post_categories = '';
+										}
+
+										$service_term_list = wp_get_post_terms( $post->ID, 'service', array( 'fields' => 'names' ) );
+										$sector_term_list = wp_get_post_terms( $post->ID, 'sector', array( 'fields' => 'names' ) );
+
+										cok_get_template_part('template-parts/content', 'teaser', array(
+											'css_class' => 'work ' . implode(' ', array_map('strtolower',$sector_term_list)) . ' ' . implode(' ', array_map('strtolower', $service_term_list)),
+											'image' => get_field('teaser_image'),
+											'meta' => $post_categories,
+											'list_type' => 'work',
+											'show_link' => true
+										));
+									} ?>
+									</div>
+								</div>
+							<?php
+							endif;
+							wp_reset_query();
+							?>
 						</div>
 					<?php
 					endif; ?>

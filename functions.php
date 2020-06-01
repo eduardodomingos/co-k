@@ -142,8 +142,8 @@ function cok_widgets_init() {
 			'name'          => esc_html__( 'Work Footer', 'cok' ),
 			'id'            => 'sidebar-2',
 			'description'   => esc_html__( 'Add widgets here.', 'cok' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</aside>',
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
 		);
@@ -158,14 +158,17 @@ add_action( 'widgets_init', 'cok_widgets_init' );
  * Enqueue scripts and styles.
  */
 function cok_scripts() {
+	wp_enqueue_style( 'cok-fonts', '//fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Montserrat:wght@700;800;900&family=Playfair+Display:wght@400;700&display=swap' );
 	wp_enqueue_style( 'cok-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'cok-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'cok-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'cok-js', get_template_directory_uri() . '/js/app.min.js', array('jquery'), '20200601', true );
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+
+
+	// if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+	// 	wp_enqueue_script( 'comment-reply' );
+	// }
 }
 add_action( 'wp_enqueue_scripts', 'cok_scripts' );
 

@@ -11,21 +11,46 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'cok' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'cok' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'cok' ), 'cok', '<a href="http://www.eduardodomingos.com">Eduardo Domingos</a>' );
-				?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
+<footer class="footer insulate--mid">
+	<div class="wrap">
+		<a class="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><span class="screen-reader-text"><?php bloginfo( 'name' ); ?></span></a>
+	</div>
+	<div class="wrap insulate--large">
+		<div class="footer-content">
+			<div class="left">
+				<h2 class="title">at the end&lt;/</h2>
+				<?php the_field('company_address', 'option'); ?>
+			</div>
+			<div class="right">
+				<div>
+					<p>Follow us here</p>
+					<?php
+					wp_nav_menu(
+						array(
+							'container'=> false,
+							'theme_location' => 'menu-2'
+						)
+					);
+					?>
+				</div>
+				<div>
+					<p>More</p>
+					<?php
+					wp_nav_menu(
+						array(
+							'container'=> false,
+							'theme_location' => 'menu-3'
+						)
+					);
+					?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="legal wrap"><?php the_field('copyright_text', 'option');?></div>
+</footer>
+
+
 
 
 <?php wp_footer(); ?>

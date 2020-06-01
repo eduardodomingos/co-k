@@ -1,0 +1,71 @@
+/*--------------------------------------------------------------
+# Spacing
+--------------------------------------------------------------*/
+$baseline: 6px;
+$spacing-unit-factor-tiny: 1; // 6px
+$spacing-unit-factor-small: 2; // 12px
+$spacing-unit-factor: 4; // 24px
+$spacing-unit-factor-large: 8; // 48px
+$spacing-unit-factor-huge: 16; // 96px
+$spacing-unit: rem($baseline * $spacing-unit-factor);
+$spacing-unit--tiny: rem($baseline * $spacing-unit-factor-tiny);
+$spacing-unit--small: rem($baseline * $spacing-unit-factor-small);
+$spacing-unit--large: rem($baseline * $spacing-unit-factor-large);
+$spacing-unit--huge: rem($baseline * $spacing-unit-factor-huge);
+
+/*--------------------------------------------------------------
+# Colors
+--------------------------------------------------------------*/
+$mine-shaft: #252525;
+$rose: #FF005C;
+$cosmos: #FFDBDB;
+$cornflower-blue: #7A64FF;
+$black: #000000;
+$white: #ffffff;
+
+// $cod-gray: #111111;
+// $desert-storm: #f5f4f3;
+// $lightning-yellow: #ffbf11;
+// $san-marino: #4376A3;
+// $facebook: #4267b2;
+// $twitter: #32aadc;
+// $instagram: #8a3ab9;
+// $whatsapp: #25d366;
+
+/*--------------------------------------------------------------
+# Text
+--------------------------------------------------------------*/
+$font-ibm-plex: 'IBM Plex Mono', monospace;
+$font-times-new-roman: 'Times New Roman', Times, serif;
+$font-montserrat: 'Montserrat', sans-serif;
+$font-playfair: 'Playfair Display', serif;
+$font-size: rem(16px);
+$line-height: 1.5;
+$line-height--title: 1.2;
+$font--normal: 400;
+$font--medium: 500;
+$font--bold: 700;
+$font-size--h1: rem(36px);
+$font-size--h2: rem(28px);
+$font-size--h3: rem(24px);
+$font-size--h4: rem(20px);
+$font-size--h5: rem(18px);
+$font-size--h6: rem(16px);
+
+/*--------------------------------------------------------------
+# Element Sizes
+--------------------------------------------------------------*/
+$wrapper-max-width: rem(1372px);
+$wrapper-content-max-width: rem(688px);
+$header-top-height: rem(100px);
+$header-top-height--collapsed: rem(60px);
+$header-cover-height: 50vh;
+$header-cover-height--home: 100vh;
+$nav-toggle-icon-width: rem(20px);
+$nav-toggle-icon-height: rem(2px);
+$nav-toggle-icon-gap: rem(6px);
+/*--------------------------------------------------------------
+# Global
+--------------------------------------------------------------*/
+// $transition: 0.4s ease-in-out;
+// $border-radius: rem(2px);

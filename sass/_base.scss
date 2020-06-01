@@ -59,7 +59,11 @@ a {
 button,
 input[type="button"],
 input[type="reset"],
-input[type="submit"] {
+input[type="submit"],
+input[type=text],
+input[type=email],
+input[type=tel],
+input[type=url] {
     @include attention() {
         outline: 0;
     }

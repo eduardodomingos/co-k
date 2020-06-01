@@ -10,6 +10,13 @@
         };
 
         (function init() {
+            
+            $(":file").filestyle({
+                text: "Attach",
+                input: false,
+                badge: true
+            });
+
             // Hamburger
             dom.$navToggle.click(function() {
                 dom.$body.toggleClass('nav-open');

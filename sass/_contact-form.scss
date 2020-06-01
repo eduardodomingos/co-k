@@ -1,0 +1,34 @@
+.contact-form {
+    label {
+        color: $silver;
+    }
+
+    p {
+        margin-bottom: $spacing-unit--large;
+    }
+
+    .two-cols {
+        @include mq($from: tablet) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    input[type=text],
+    input[type=email],
+    input[type=tel],
+    input[type=url] {
+        border: 0;
+        border-bottom: rem(1px solid $black);
+        padding: rem(10px);
+    }
+
+    .bootstrap-filestyle {
+        padding: rem(10px 0);
+        .buttonText {
+            color: $cornflower-blue;
+            font-style: italic;
+            text-decoration: underline;
+        }
+    }
+}

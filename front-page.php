@@ -194,7 +194,16 @@ get_header();
 					endif; ?>
 				
 					<?php
-
+				// Case: Career layout.
+				elseif( get_row_layout() == 'careers' ): ?>
+					<?php $section_title = esc_html(get_sub_field('title')); ?>
+					<div class="careers insulate insulate--large">
+						<div class="wrap">
+							<h2 class="title"><?php echo $section_title;?></h2>
+							<?php echo do_shortcode( '[contact-form-7 id="108" title="Contact form 1" html_class="contact-form"]' ); ?>
+						</div>
+					</div>
+				<?php
 				endif;
 
 			// End loop.

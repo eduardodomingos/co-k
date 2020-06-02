@@ -299,23 +299,12 @@ function remove_wps_width_attribute($html)
 }
 
 
-
-
-function help4cms_wpcf7_form_elements($html)
-{
-	function help4cms_replace_include_blank($name, $text, &$html)
-	{
-		$matches = false;
-		preg_match('/<select name="' . $name . '"[^>]*>(.*)<\/select>/iU', $html, $matches);
-		if ($matches) {
-			$select = str_replace('<option value="">---</option>', '<option value="">' . $text . '</option>', $matches[0]);
-			$html = preg_replace('/<select name="' . $name . '"[^>]*>(.*)<\/select>/iU', $select, $html);
-		}
-	}
-
-	help4cms_replace_include_blank('menu-availability', 'Please Select', $html); // Chnage here your dropdown menu ID
-	help4cms_replace_include_blank('menu-motivation', 'Please Select', $html); // Chnage here your dropdown menu ID
-	return $html;
+// Add active class to menu 
+function special_nav_class ($classes, $item) {
+  if (in_array('current-menu-item', $classes) ){
+    $classes[] = 'active ';
+  }
+  return $classes;
 }
 
-//add_filter('wpcf7_form_elements', 'help4cms_wpcf7_form_elements');
+add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2);

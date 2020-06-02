@@ -50,9 +50,19 @@ get_header();
 				// Case: Clients layout.
 				elseif( get_row_layout() == 'clients' ): 
 					$section_title = esc_html(get_sub_field('title'));
+					$content = get_sub_field('content');
 					?>
 					<div class="clients insulate--large">
-						<h2 class="wrap title"><?php echo $section_title;?></h2>
+					<div class="wrap">
+							<?php if(!empty($section_title)) : ?>
+								<h2 class="screen-reader-text"><?php echo $section_title;?></h2>
+							<?php endif; ?>
+							<div class="intro">
+								<?php if(!empty($content)) : ?>
+									<?php echo $content;?>
+								<?php endif; ?>
+							</div>
+						</div>
 						<?php
 						$query = new WP_Query(array(
 							'post_type' => 'client',
@@ -120,6 +130,7 @@ get_header();
 				// Case: Works layout.
 				elseif( get_row_layout() == 'works' ):
 					$section_title = esc_html(get_sub_field('title'));
+					$content = get_sub_field('content');
 					$sector_terms = get_terms( array(
 						'taxonomy' => 'sector',
 						'hide_empty' => false,
@@ -135,8 +146,15 @@ get_header();
 						<div class="works">
 							<header class="works-header insulate--mid">
 								<div class="wrap">
-									<h2 class="screen-reader-text">Work</h2>
-									<p><?php echo $section_title; ?></p>
+									<?php if(!empty($section_title)) : ?>
+										<h2 class="screen-reader-text"><?php echo $section_title;?></h2>
+									<?php endif; ?>
+									<div class="intro">
+										<?php if(!empty($content)) : ?>
+											<?php echo $content;?>
+										<?php endif; ?>
+									</div>
+									
 									<div class="works-filters">
 										<button data-filter="*" class="active">all work</button>
 										<?php if($sector_terms): ?>
@@ -206,11 +224,19 @@ get_header();
 				
 					<?php
 				// Case: Career layout.
-				elseif( get_row_layout() == 'careers' ): ?>
-					<?php $section_title = esc_html(get_sub_field('title')); ?>
+				elseif( get_row_layout() == 'careers' ):
+					$section_title = esc_html(get_sub_field('title'));
+					$content = get_sub_field('content'); ?>
 					<div class="careers insulate insulate--large">
 						<div class="wrap">
-							<h2 class="title"><?php echo $section_title;?></h2>
+							<?php if(!empty($section_title)) : ?>
+								<h2 class="screen-reader-text"><?php echo $section_title;?></h2>
+							<?php endif; ?>
+							<div class="intro">
+								<?php if(!empty($content)) : ?>
+									<?php echo $content;?>
+								<?php endif; ?>
+							</div>
 							<?php echo do_shortcode( '[contact-form-7 id="108" title="Contact form 1" html_class="contact-form"]' ); ?>
 						</div>
 					</div>

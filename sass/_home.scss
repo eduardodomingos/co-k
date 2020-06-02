@@ -52,10 +52,13 @@
 }
 
 .works,
-.creators {
+.clients,
+.creators,
+.careers {
     .intro {
         font-weight: 600;
         font-style: rem(20px);
+        margin-bottom: $spacing-unit--large;
         @include mq($from: mobile) {
             font-size: rem(25px);
         }
@@ -65,9 +68,8 @@
     }
 }
 
-.works {}
-.careers {
-    .title {
-        margin-bottom: $spacing-unit--large;
-    }
-}
+// .careers {
+//     .title {
+//         margin-bottom: $spacing-unit--large;
+//     }
+// }

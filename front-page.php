@@ -32,7 +32,7 @@ get_header();
 					$color = get_sub_field('color');
 					$cssClass=  str_replace(' ', '-', strtolower ($section_title));
 					?>
-					<div class="<?php echo $cssClass; ?> insulate--huge"
+					<div class="promo <?php echo $cssClass; ?> insulate--huge"
 						<?php if(!empty($bg_color) || !empty($color)):?>
 							style="<?php echo !empty($bg_color) ? 'background-color:' . $bg_color .';' : '' ?><?php echo !empty($color) ? ' color:'. $color .';' : '' ?>"
 						<?php endif; ?>>
@@ -77,9 +77,20 @@ get_header();
 				// Case: Team Members layout.
 				elseif( get_row_layout() == 'team_members' ): 
 					$section_title = esc_html(get_sub_field('title'));
+					$content = get_sub_field('content');
+					
 					?>
 					<div class="creators insulate">
-						<h2 class="wrap title"><?php echo $section_title;?></h2>
+						<div class="wrap">
+							<?php if(!empty($section_title)) : ?>
+								<h2 class="screen-reader-text"><?php echo $section_title;?></h2>
+							<?php endif; ?>
+							<div class="intro">
+								<?php if(!empty($content)) : ?>
+									<?php echo $content;?>
+								<?php endif; ?>
+							</div>
+						</div>
 						<?php 
 						$query = new WP_Query(array(
 							'post_type' => 'team',

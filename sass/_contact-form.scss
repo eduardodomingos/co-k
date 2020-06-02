@@ -3,8 +3,27 @@
         color: $silver;
     }
 
+
+    span.wpcf7-list-item {
+        margin: 0;
+    }
+
+    a {
+        color: $rose;
+        @include attention() {
+            text-decoration: underline;
+        }
+    }
+
     p {
         margin-bottom: $spacing-unit--large;
+    }
+
+    .acceptance {
+        font-style: italic;
+        > label {
+            text-decoration: underline;
+        }
     }
 
     .two-cols {
@@ -21,6 +40,21 @@
         border: 0;
         border-bottom: rem(1px solid $black);
         padding: rem(10px);
+        max-width: 100%;
+    }
+
+    input[type=file]{
+        max-width: 100%;
+    }
+
+    input[type=submit]{
+        background-color: transparent;
+        border: none;
+        color: $cornflower-blue;
+        max-width: 100%;
+        &:disabled {
+            opacity: .5;
+        }
     }
 
     .bootstrap-filestyle {
@@ -45,7 +79,10 @@
     .select-wrapper {
         position: relative;
         display: inline-block;
-        width: 50%;
+        width: 100%;
+        @include mq($from: tablet) {
+            width: 50%;
+        }
     }
     
     .select-wrapper:before {

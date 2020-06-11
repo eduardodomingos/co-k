@@ -32,7 +32,7 @@ get_header();
 					$color = get_sub_field('color');
 					$cssClass=  str_replace(' ', '-', strtolower ($section_title));
 					?>
-					<div class="promo <?php echo $cssClass; ?> insulate--huge"
+					<div id="<?php echo $cssClass; ?>" class="promo <?php echo $cssClass; ?> insulate--huge"
 						<?php if(!empty($bg_color) || !empty($color)):?>
 							style="<?php echo !empty($bg_color) ? 'background-color:' . $bg_color .';' : '' ?><?php echo !empty($color) ? ' color:'. $color .';' : '' ?>"
 						<?php endif; ?>>
@@ -52,7 +52,7 @@ get_header();
 					$section_title = esc_html(get_sub_field('title'));
 					$content = get_sub_field('content');
 					?>
-					<div class="clients insulate--large">
+					<div id="clients" class="clients insulate--large">
 					<div class="wrap">
 							<?php if(!empty($section_title)) : ?>
 								<h2 class="screen-reader-text"><?php echo $section_title;?></h2>
@@ -90,7 +90,7 @@ get_header();
 					$content = get_sub_field('content');
 					
 					?>
-					<div class="creators insulate">
+					<div id="creators" class="creators insulate">
 						<div class="wrap">
 							<?php if(!empty($section_title)) : ?>
 								<h2 class="screen-reader-text"><?php echo $section_title;?></h2>
@@ -143,7 +143,7 @@ get_header();
 
 					
 					if  ($sector_terms || $service_terms) : ?>
-						<div class="works">
+						<div id="works" class="works">
 							<header class="works-header insulate--mid">
 								<div class="wrap">
 									<?php if(!empty($section_title)) : ?>
@@ -227,7 +227,7 @@ get_header();
 				elseif( get_row_layout() == 'careers' ):
 					$section_title = esc_html(get_sub_field('title'));
 					$content = get_sub_field('content'); ?>
-					<div class="careers insulate insulate--large">
+					<div id="careers" class="careers insulate insulate--large">
 						<div class="wrap">
 							<?php if(!empty($section_title)) : ?>
 								<h2 class="screen-reader-text"><?php echo $section_title;?></h2>

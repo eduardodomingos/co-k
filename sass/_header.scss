@@ -148,6 +148,7 @@
         text-align: center;
         font-weight: $font--bold;
         font-size: rem(60px);
+        white-space: nowrap;
         .nav-open & {
             display: block;
             position: absolute;

@@ -32,13 +32,13 @@
                 font-family: $font-times-new-roman;
                 font-size: rem(70px);
                 font-style: italic;
-                line-height: .9;
+                line-height: .85;
                 @include mq($from: tablet) {
                     font-size: rem(80px);
-                    max-width: 80%;
+                    //max-width: 80%;
                 }
                 @include mq($from: desktop) {
-                    font-size: rem(100px);
+                    font-size: rem(120px);
                 }
             }
         }
@@ -143,6 +143,20 @@
         }
     }
 
+    %navLinkHover {
+        position: relative;
+        z-index: 1;
+        &:before {
+            content: '';
+            @include size(100%, 32%);
+            position: absolute;
+            top: 40%;
+            left: 0;
+            background-color: $rose;
+            z-index: -1;
+        }
+    }
+
     .nav {
         display: none;
         text-align: center;
@@ -156,19 +170,15 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
-        li.active {
+
+        li {
             a {
-                position: relative;
-                z-index: 1;
-                &:before {
-                    content: '';
-                    @include size(100%, 32%);
-                    position: absolute;
-                    top: 40%;
-                    left: 0;
-                    background-color: $rose;
-                    z-index: -1;
+                @include attention() {
+                    @extend %navLinkHover;
                 }
+            }
+            &.active a {
+                @extend %navLinkHover;
             }
         }
     }

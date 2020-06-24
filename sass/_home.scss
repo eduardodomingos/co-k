@@ -23,16 +23,18 @@
 }
 
 .about {
-    font-size: rem(20px);
+    font-size: rem(30px);
     font-weight: 600;
+    line-height: 1.1;
     @include mq($from: tablet) {
-        font-size: rem(25px);
+        font-size: rem(35px);
     }
-    // @include mq($from: desktop) {
-    //     font-size: rem(30px);
-    // }
+    @include mq($from: desktop) {
+        font-size: rem(40px);
+    }
 }
 
+.who,
 .what {
     font-size: rem(20px);
     font-weight: 500;
@@ -44,32 +46,29 @@
     // }
 }
 
-.who {
-    font-weight: 500;
-    @include mq($from: desktop) {
-        font-size: rem(18px);
+.works,
+.clients,
+.creators {
+    .intro {
+        font-weight: 600;
+        font-style: rem(20px);
+        margin-bottom: $spacing-unit--large;
+        @include mq($from: mobile) {
+            font-size: rem(35px);
+        }
+        @include mq($from: desktop) {
+            font-size: rem(40px);
+        }
     }
 }
 
-.works,
-.clients,
-.creators,
 .careers {
     .intro {
         font-weight: 600;
         font-style: rem(20px);
         margin-bottom: $spacing-unit--large;
         @include mq($from: mobile) {
-            font-size: rem(25px);
-        }
-        @include mq($from: desktop) {
             font-size: rem(30px);
         }
     }
 }
-
-// .careers {
-//     .title {
-//         margin-bottom: $spacing-unit--large;
-//     }
-// }

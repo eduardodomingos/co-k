@@ -62,7 +62,7 @@ class COK_CTA extends WP_Widget {
 
         <p>
 			<label for="<?php echo $this->get_field_name( 'description_url' ); ?>"><?php esc_html_e( 'Description url:', 'cok'); ?></label>
-            <input class="widefat" id="<?php echo $this->get_field_id( 'description_url' ); ?>" name="<?php echo $this->get_field_name( 'description_url' ); ?>" type="url" value="<?php echo esc_attr( $instance['description_url'] ); ?>" />
+            <input class="widefat" id="<?php echo $this->get_field_id( 'description_url' ); ?>" name="<?php echo $this->get_field_name( 'description_url' ); ?>" type="email" value="<?php echo esc_attr( $instance['description_url'] ); ?>" />
 		</p>
 
         <?php

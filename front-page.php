@@ -36,7 +36,7 @@ get_header();
 						<?php if(!empty($bg_color) || !empty($color)):?>
 							style="<?php echo !empty($bg_color) ? 'background-color:' . $bg_color .';' : '' ?><?php echo !empty($color) ? ' color:'. $color .';' : '' ?>"
 						<?php endif; ?>>
-						<div class="wrap">
+						<div class="wrap wrap--mid">
 							<?php if(!empty($section_title)) : ?>
 								<h2 class="screen-reader-text"><?php echo $section_title;?></h2>
 							<?php endif; ?>
@@ -53,7 +53,7 @@ get_header();
 					$content = get_sub_field('content');
 					?>
 					<div id="clients" class="clients insulate--large">
-					<div class="wrap">
+					<div class="wrap wrap--mid">
 							<?php if(!empty($section_title)) : ?>
 								<h2 class="screen-reader-text"><?php echo $section_title;?></h2>
 							<?php endif; ?>
@@ -70,7 +70,7 @@ get_header();
 							'posts_per_page' => -1
 						));
 						if ( $query->have_posts() ) : ?>
-						<div class="clients-grid wrap">
+						<div class="clients-grid wrap wrap--mid">
 							<?php
 							while ($query->have_posts()) {
 								$query->the_post();
@@ -91,7 +91,7 @@ get_header();
 					
 					?>
 					<div id="creators" class="creators insulate">
-						<div class="wrap">
+						<div class="wrap wrap--mid">
 							<?php if(!empty($section_title)) : ?>
 								<h2 class="screen-reader-text"><?php echo $section_title;?></h2>
 							<?php endif; ?>
@@ -108,7 +108,7 @@ get_header();
 							'posts_per_page' => -1
 						));
 						if ( $query->have_posts() ) : ?>
-						<div class="team-grid wrap">
+						<div class="team-grid wrap wrap--mid">
 							<?php
 							while ($query->have_posts()) {
 								$query->the_post();								
@@ -144,8 +144,8 @@ get_header();
 					
 					if  ($sector_terms || $service_terms) : ?>
 						<div id="works" class="works">
-							<header class="works-header insulate--mid">
-								<div class="wrap">
+							<header class="works-header">
+								<div class="wrap wrap--mid">
 									<?php if(!empty($section_title)) : ?>
 										<h2 class="screen-reader-text"><?php echo $section_title;?></h2>
 									<?php endif; ?>
@@ -184,7 +184,7 @@ get_header();
 							));
 							if ( $query->have_posts() ) : ?>
 							
-								<div class="wrap">
+								<div class="wrap wrap--mid">
 									<div class="works-grid">
 									<?php
 									while ($query->have_posts()) {
@@ -204,8 +204,9 @@ get_header();
 										$service_term_list = wp_get_post_terms( $post->ID, 'service', array( 'fields' => 'names' ) );
 										$sector_term_list = wp_get_post_terms( $post->ID, 'sector', array( 'fields' => 'names' ) );
 
+
 										cok_get_template_part('template-parts/content', 'teaser', array(
-											'css_class' => 'work ' . implode(' ', array_map('strtolower',$sector_term_list)) . ' ' . implode(' ', array_map('strtolower', $service_term_list)),
+											'css_class' => 'work ' . implode(' ', array_map(function($value) { return str_replace(array(' ', '/','&amp;'), array('-','-','and'), strtolower($value)); }, $sector_term_list)) . ' ' . implode(' ', array_map(function($value) { return str_replace(array(' ', '/','&amp;'), array('-','-','and'), strtolower($value)); }, $service_term_list)),
 											'image' => get_field('teaser_image'),
 											'meta' => $post_categories,
 											'list_type' => 'work',
@@ -227,8 +228,8 @@ get_header();
 				elseif( get_row_layout() == 'careers' ):
 					$section_title = esc_html(get_sub_field('title'));
 					$content = get_sub_field('content'); ?>
-					<div id="careers" class="careers insulate insulate--large">
-						<div class="wrap">
+					<div id="careers" class="careers insulate insulate--huge">
+						<div class="wrap wrap--mid">
 							<?php if(!empty($section_title)) : ?>
 								<h2 class="screen-reader-text"><?php echo $section_title;?></h2>
 							<?php endif; ?>

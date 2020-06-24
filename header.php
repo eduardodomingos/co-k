@@ -36,17 +36,33 @@
                 </div>
 			</div>
 			<nav id="site-navigation" class="main-navigation">
-				<?php
-				wp_nav_menu(
-					array(
-						'menu_class' => 'nav',
-						'container'=> false,
-						'theme_location' => 'menu-1',
-						'menu_id'        => 'primary-menu',
-					)
-				);
-				?>
+				<?php if ( is_front_page() ) : ?>
+					<?php // for homepage, since we want smooth scrooling between sections we use a specific menu ?>
+					<?php
+					wp_nav_menu(
+						array(
+							'menu_class' => 'nav',
+							'container'=> false,
+							'theme_location' => 'menu-1',
+							'menu_id'        => 'primary-menu',
+						)
+					);
+					?>
+				<?php else: ?>
+					<?php // for other pages, since we dint want smooth scrooling between sections we use a specific menu ?>
+					<?php
+					wp_nav_menu(
+						array(
+							'menu_class' => 'nav',
+							'container'=> false,
+							'theme_location' => 'menu-4',
+							'menu_id'        => 'primary-menu',
+						)
+					);
+					?>
+				<?php endif; ?>
 			</nav><!-- #site-navigation -->
+			
 			<?php if ( is_front_page() ) : ?>
 				<div class="header-content wrap">
 					<?php

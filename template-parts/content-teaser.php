@@ -18,11 +18,15 @@
     }
     ?>
     <div class="teaser-content">
-    <?php if(isset($show_link) && true === $show_link) : ?>
-        <?php the_title( '<h1><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h1>' );?>
-    <?php else: ?>
-        <?php the_title( '<h1>', '</h1>' );?>
-    <?php endif;?>
+        <?php if(isset($show_link) && true === $show_link) : ?>
+            <?php  echo '<a class="overlay-link" href="' . esc_url( get_permalink() ) . '" rel="bookmark"></a>';?>
+        <?php endif;?>
+
+        <?php if(isset($show_link) && true === $show_link) : ?>
+            <?php the_title( '<h1><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h1>' );?>
+        <?php else: ?>
+            <?php the_title( '<h1>', '</h1>' );?>
+        <?php endif;?>
         
         <?php if(!empty($meta)): ?>
             <p class="meta"><?php echo $meta;?></p>

@@ -1,6 +1,7 @@
-require('es6-promise').polyfill();
+"use strict";
 
-var gulp          = require('gulp'),
+// Load plugins
+const gulp          = require('gulp'),
     sass          = require('gulp-sass'),
     autoprefixer  = require('gulp-autoprefixer'),
     plumber       = require('gulp-plumber'),
@@ -19,9 +20,10 @@ var onError = function( err ) {
   this.emit('end');
 };
 
-// Sass
-gulp.task('sass', function() {
-  return gulp.src('./sass/**/*.scss')
+// CSS task
+function css() {
+  return gulp
+  .src('./sass/**/*.scss')
   .pipe( sourcemaps.init() )
   .pipe(plumber({ errorHandler: onError }))
   .pipe(sass())
@@ -29,39 +31,40 @@ gulp.task('sass', function() {
   .pipe( minifycss({ "uglyComments": true }) )
   .pipe(sourcemaps.write('./sass/maps'))
   .pipe(gulp.dest('./'))
-});
+}
 
-// JavaScript
-gulp.task('js', function() {
-  return gulp.src([
-    './node_modules/isotope-layout/dist/isotope.pkgd.min.js',
-    './js/modernizr.js',
-    './js/bootstrap-filestyle.min.js',
-    './js/app.js'
-  ])
+// JS task
+function js() {
+  return gulp
+  .src(
+    [
+      './js/app.js'
+    ]
+  )
   .pipe(sourcemaps.init())
-  // .pipe(jshint())
-  // .pipe(jshint.reporter('default'))
+  .pipe(jshint())
+  .pipe(jshint.reporter('default'))
   .pipe(concat('app.js'))
   .pipe(rename({suffix: '.min'}))
   .pipe(uglify())
   .pipe(sourcemaps.write('./maps'))
   .pipe(gulp.dest('./js'));
-});
+}
 
-// Images
-gulp.task('images', function() {
-  return gulp.src('./images/src/*')
+// Images task
+function images() {
+  return gulp
+  .src('./images/src/*')
   .pipe(plumber({ errorHandler: onError }))
   .pipe(imagemin({ optimizationLevel: 7, progressive: true }))
   .pipe(gulp.dest('./images/dist'));
-});
+}
 
-// Watch
-gulp.task('watch', function() {
-  gulp.watch('./sass/**/*.scss', ['sass']);
-  gulp.watch(['./js/*.js', '!./js/app.min.js'], ['js']);
-  gulp.watch('images/src/*', ['images']);
-});
+// Watch files
+function watchFiles() {
+  gulp.watch("./sass/**/*.scss", css);
+  gulp.watch('images/src/*', images);
+  gulp.watch(['./js/*.js', '!./js/app.min.js'], js);
+}
 
-gulp.task('default', ['sass', 'js', 'images', 'watch']);
+exports.default = gulp.series(gulp.parallel(css, js, images, watchFiles));

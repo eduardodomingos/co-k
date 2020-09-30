@@ -60,4 +60,13 @@
     h6 {
         font-size: $font-size--h6;
     }
+
+    .alignfull {
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+        figcaption {
+            margin-left: 1em;
+            margin-right: 1em;
+        }
+    }
 }

@@ -176,20 +176,15 @@ get_header();
 									</div>
 								</div>
 							</header>
-							<?php 
-							$query = new WP_Query(array(
-								'post_type' => 'work',
-								'post_status' => 'publish',
-								'posts_per_page' => -1
-							));
-							if ( $query->have_posts() ) : ?>
-							
-								<div class="wrap wrap--mid">
-									<div class="works-grid">
-									<?php
-									while ($query->have_posts()) {
-										$query->the_post();
-										
+							<?php
+							$featured_posts = get_sub_field('featured_work');
+							if( $featured_posts ): ?>
+							<div class="wrap wrap--full">
+								<div class="works-grid">
+								
+									<?php foreach( $featured_posts as $post ): 
+										setup_postdata($post);
+
 										$cats = array();
 										foreach (get_the_category($post->ID) as $c) {
 											$cat = get_category($c);
@@ -204,21 +199,19 @@ get_header();
 										$service_term_list = wp_get_post_terms( $post->ID, 'service', array( 'fields' => 'names' ) );
 										$sector_term_list = wp_get_post_terms( $post->ID, 'sector', array( 'fields' => 'names' ) );
 
-
 										cok_get_template_part('template-parts/content', 'teaser', array(
 											'css_class' => 'work ' . implode(' ', array_map(function($value) { return str_replace(array(' ', '/','&amp;'), array('-','-','and'), strtolower($value)); }, $sector_term_list)) . ' ' . implode(' ', array_map(function($value) { return str_replace(array(' ', '/','&amp;'), array('-','-','and'), strtolower($value)); }, $service_term_list)),
 											'image' => get_field('teaser_image'),
 											'meta' => $post_categories,
 											'list_type' => 'work',
 											'show_link' => true
-										));
-									} ?>
-									</div>
+										));	
+										?>
+									<?php endforeach; ?>
+							
 								</div>
-							<?php
-							endif;
-							wp_reset_query();
-							?>
+								<?php wp_reset_postdata(); ?>
+							<?php endif; ?>
 						</div>
 					<?php
 					endif; ?>

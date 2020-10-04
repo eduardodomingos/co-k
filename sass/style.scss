@@ -1,5 +1,5 @@
 /*!
-Theme Name: cok
+Theme Name: cok 
 Theme URI: http://underscores.me/
 Author: Eduardo Domingos
 Author URI: http://www.eduardodomingos.com
@@ -32,6 +32,7 @@ $mq-breakpoints: (
     // Tweakpoints
     mobileLandscape: 480px
 );
+@import "font";
 @import "../node_modules/sass-mq/mq";
 @import "normalize";
 @import "reset";

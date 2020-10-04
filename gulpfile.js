@@ -38,6 +38,9 @@ function js() {
   return gulp
   .src(
     [
+      './node_modules/isotope-layout/dist/isotope.pkgd.min.js',
+      './js/modernizr.js',
+      './js/bootstrap-filestyle.min.js',
       './js/app.js'
     ]
   )

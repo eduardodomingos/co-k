@@ -6,7 +6,7 @@
         }
         
 
-        $raw_image = wp_get_attachment_image( $image, 'thumbnail' );
+        $raw_image = wp_get_attachment_image( $image, 'full' );
         $final_image = preg_replace('/(height|width)="\d*"\s/', "", $raw_image);
 
         echo $final_image;

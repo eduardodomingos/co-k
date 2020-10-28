@@ -8,22 +8,30 @@
         margin-bottom: $spacing-unit;
     }
 
-    .title {
-        font-family: $font-montserrat;
-        font-weight: 800;
-        font-size: rem(45px);
-        margin-bottom: $spacing-unit;
-        line-height: 1.1;
 
-        @include mq($from: mobileLandscape) {
-            font-size: rem(50px);
-        }
-        @include mq($from: tablet) {
-            font-size: rem(55px);
-        }
-        @include mq($from: desktop) {
-            font-size: rem(70px);
-        }
+    &.content--work {
+        padding-top: 0; 
+    }
+
+    .title {
+        @extend %screen-reader-text;
+        // font-family: $font-montserrat;
+        // font-weight: 800;
+        // font-size: rem(45px);
+        // margin-bottom: $spacing-unit;
+        // line-height: 1.1;
+
+
+
+        // @include mq($from: mobileLandscape) {
+        //     font-size: rem(50px);
+        // }
+        // @include mq($from: tablet) {
+        //     font-size: rem(55px);
+        // }
+        // @include mq($from: desktop) {
+        //     font-size: rem(70px);
+        // }
     }
     .lead {
         font-style: italic;
@@ -59,6 +67,42 @@
     }
     h6 {
         font-size: $font-size--h6;
+    }
+
+    .alignfull + .alignfull {
+        margin-top: -$spacing-unit;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+        &.alignfull {
+            padding-left: $spacing-unit;
+            padding-right: $spacing-unit;
+        }
+    }
+
+    .font-family-hp {
+        font-family: $font-sulmono;
+    }
+
+    .texto-centrado-bg {
+        @include mq($from: tablet) {
+            padding-left: 20%!important;
+            padding-right: 40%!important;
+        }
+        @include mq($from: desktop) {
+            padding-left: 30%!important;
+            padding-right: 90%!important;
+        }
+    }
+
+    .justificado {
+        text-align: justify;
     }
 
     .alignfull {

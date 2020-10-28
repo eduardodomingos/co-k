@@ -13,6 +13,7 @@ body {
     line-height: $line-height;
     background-color: $white;
     padding-top: $header-top-height;
+    &.home,
     &.has-featured-image {
         padding-top: 0;
         &.header-collapsed {

@@ -34,6 +34,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <?php wp_body_open(); ?>
 
 	<header class="header" <?php echo has_post_thumbnail($post->ID ) ? 'style="background-image:url('. wp_get_attachment_url( get_post_thumbnail_id($post->ID) ) .')"' : '' ?>>
+		
+		<?php if ( is_front_page() ) : ?>
+			<?php
+			$video = get_field('video_hp');
+			if( $video ): ?>
+			<video class="video-hp" muted autoplay loop>
+				<source src="<?php echo $video['url']; ?>" type="video/mp4">
+			</video>
+			<?php endif; ?>
+		<?php endif; ?>
+	
 		<div class="header-inner">
 			<div class="top">
                 <div class="wrap">
